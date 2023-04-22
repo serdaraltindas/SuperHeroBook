@@ -16,6 +16,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        var superKahramanIsimleri = [String]()
+        superKahramanIsimleri.append("Batman")
+        superKahramanIsimleri.append("Batman")
+        superKahramanIsimleri.append("Batman")
+        superKahramanIsimleri.append("Batman")
+        superKahramanIsimleri.append("Batman")
+        
+        var superKahramanGorselleri = [UIImage]()
+        superKahramanGorselleri.append(UIImage(named: "batman")!)
+        superKahramanGorselleri.append(UIImage(named: "batman")!)
+        superKahramanGorselleri.append(UIImage(named: "batman")!)
+        superKahramanGorselleri.append(UIImage(named: "batman")!)
+        superKahramanGorselleri.append(UIImage(named: "batman")!)
+        
+    
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,6 +45,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-
 }
 

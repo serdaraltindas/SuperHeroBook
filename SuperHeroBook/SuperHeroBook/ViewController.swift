@@ -31,14 +31,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         superKahramanGorselIsimleri.append("batman")
         superKahramanGorselIsimleri.append("batman")
         superKahramanGorselIsimleri.append("batman")
-        
-        
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return superKahramanIsimleri.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = superKahramanIsimleri[indexPath.row]
@@ -52,6 +48,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //TABLEVIEW deleteRows ile tableView üzerinden kaldırma işlemi yapıyoruz.Ve güncelliyoruz.
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetailsVC", sender: self)
     }
     
 }

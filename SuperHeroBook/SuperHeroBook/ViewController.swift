@@ -8,11 +8,14 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
- 
+    
     @IBOutlet weak var tableView: UITableView!
     
     var superKahramanIsimleri = [String]()
     var superKahramanGorselIsimleri = [String]()
+    
+    var secilenIsim = ""
+    var secilenGorselIsmi = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         superKahramanGorselIsimleri.append("batman")
         superKahramanGorselIsimleri.append("batman")
         superKahramanGorselIsimleri.append("batman")
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return superKahramanIsimleri.count
@@ -50,8 +54,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        secilenIsim = superKahramanIsimleri[indexPath.row]
+        secilenGorselIsmi = superKahramanGorselIsimleri[indexPath.row]
         performSegue(withIdentifier: "toDetailsVC", sender: self)
     }
-    
+    //Bu şekilde burada kullandığımız ve göndermek istediğimiz bilgileri karşı tarafa gönderiyoruz.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailsVC" {
+            let destinationVC = segue.destination as! DetailsViewController
+            destinationVC.secilenKahramanIsmi = secilenIsim
+            destinationVC.secilenKahramanGorselIsmi = secilenGorselIsmi
+        }
+    }
 }
 

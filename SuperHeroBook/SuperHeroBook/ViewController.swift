@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     var superKahramanIsimleri = [String]()
-    var superKahramanGorselleri = [UIImage]()
+    var superKahramanGorselIsimleri = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,19 +20,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         tableView.delegate = self
         
+        superKahramanIsimleri.append("Batman")
+        superKahramanIsimleri.append("Batman")
+        superKahramanIsimleri.append("Batman")
+        superKahramanIsimleri.append("Batman")
+        superKahramanIsimleri.append("Batman")
+        //Görsel isimlerini burada tutuyoruz. Kendilerini ikinci ekranda alacağız.
+        superKahramanGorselIsimleri.append("batman")
+        superKahramanGorselIsimleri.append("batman")
+        superKahramanGorselIsimleri.append("batman")
+        superKahramanGorselIsimleri.append("batman")
+        superKahramanGorselIsimleri.append("batman")
         
-        superKahramanIsimleri.append("Batman")
-        superKahramanIsimleri.append("Batman")
-        superKahramanIsimleri.append("Batman")
-        superKahramanIsimleri.append("Batman")
-        superKahramanIsimleri.append("Batman")
-        
-       
-        superKahramanGorselleri.append(UIImage(named: "batman")!)
-        superKahramanGorselleri.append(UIImage(named: "batman")!)
-        superKahramanGorselleri.append(UIImage(named: "batman")!)
-        superKahramanGorselleri.append(UIImage(named: "batman")!)
-        superKahramanGorselleri.append(UIImage(named: "batman")!)
         
     }
     
@@ -44,6 +43,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = UITableViewCell()
         cell.textLabel?.text = superKahramanIsimleri[indexPath.row]
         return cell
+    }
+    //silme butonu eklenecektir.
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            superKahramanIsimleri.remove(at: indexPath.row)
+            superKahramanGorselIsimleri.remove(at: indexPath.row)
+            //TABLEVIEW deleteRows ile tableView üzerinden kaldırma işlemi yapıyoruz.Ve güncelliyoruz.
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
     }
     
 }

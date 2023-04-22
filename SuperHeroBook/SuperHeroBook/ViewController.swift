@@ -11,37 +11,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
  
     @IBOutlet weak var tableView: UITableView!
     
+    var superKahramanIsimleri = [String]()
+    var superKahramanGorselleri = [UIImage]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
         tableView.delegate = self
         
-        var superKahramanIsimleri = [String]()
+        
         superKahramanIsimleri.append("Batman")
         superKahramanIsimleri.append("Batman")
         superKahramanIsimleri.append("Batman")
         superKahramanIsimleri.append("Batman")
         superKahramanIsimleri.append("Batman")
         
-        var superKahramanGorselleri = [UIImage]()
+       
         superKahramanGorselleri.append(UIImage(named: "batman")!)
         superKahramanGorselleri.append(UIImage(named: "batman")!)
         superKahramanGorselleri.append(UIImage(named: "batman")!)
         superKahramanGorselleri.append(UIImage(named: "batman")!)
         superKahramanGorselleri.append(UIImage(named: "batman")!)
-        
-    
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return superKahramanIsimleri.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "test"
+        cell.textLabel?.text = superKahramanIsimleri[indexPath.row]
         return cell
     }
     
